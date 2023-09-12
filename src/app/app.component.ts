@@ -19,17 +19,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.getEmployees();
-    this.getUdemyCourse();
-    this.employeeService.getPoliceKillings().subscribe(
-      (response: any) => {
-        console.log('POLICE KILLINGS');
-        console.log(response);
-      },
-      (error: HttpErrorResponse) => {
-        console.log('POLICE KILLINGS ERROR');
-        console.error(error);
-      }
-  );
+
   }
 
   public getUdemyCourse(): void {
@@ -49,6 +39,7 @@ export class AppComponent implements OnInit {
     console.log('Fetching all employees...');
       this.employeeService.getEmployees().subscribe(
         (response: Employee[]) => {
+          debugger
           console.log(response);
           this.employees = response;
         },
@@ -123,7 +114,6 @@ export class AppComponent implements OnInit {
   }
 
   public onOpenModal(employee: Employee| null, mode: string): void {
-    debugger
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
